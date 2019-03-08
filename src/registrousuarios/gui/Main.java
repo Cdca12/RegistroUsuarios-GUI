@@ -12,9 +12,7 @@ import utils.*;
 public class Main {
 
     public static void main(String[] args) {
-        Menu ventanaPrincipal = new Menu();
-        ventanaPrincipal.hazInterfaz();
-        ventanaPrincipal.hazEscuchas();
+        new Menu();
 
     }
 
@@ -25,11 +23,13 @@ public class Main {
         ButtonGroup grupoRdBtn;
         JButton btnAñadir, btnConsultar, btnLimpiar;
 
-        Lista<Usuario> lista = new Lista<>();
-        int criterioAux = UtilsCriterioOrdenamiento.POR_NOMBRE; // Default
+        Lista<Usuario> lista;
+        int criterioAux;
 
         public Menu() {
             super("Registro de Usuarios");
+            lista = new Lista<>();
+            criterioAux = UtilsCriterioOrdenamiento.POR_NOMBRE; // Default
             hazInterfaz();
             hazEscuchas();
         }
@@ -72,13 +72,13 @@ public class Main {
             panelForm.setLayout(new GridLayout(0, 2));
             panelForm.setSize(100, 100);
             panelForm.add(new JLabel("Nombre:", SwingConstants.RIGHT));
-            JTextField txtNombre = new JTextField();
+            txtNombre = new JTextField();
             panelForm.add(txtNombre);
             panelForm.add(new JLabel("Edad:", SwingConstants.RIGHT));
-            JTextField txtEdad = new JTextField();
+            txtEdad = new JTextField();
             panelForm.add(txtEdad);
             panelForm.add(new JLabel("Estatura:", SwingConstants.RIGHT));
-            JTextField txtEstatura = new JTextField();
+            txtEstatura = new JTextField();
             panelForm.add(txtEstatura);
             add(panelForm, BorderLayout.CENTER);
 
@@ -118,7 +118,6 @@ public class Main {
                     criterioAux = UtilsCriterioOrdenamiento.POR_EDAD_ESTATURA_NOMBRE;
                 }
                 Ordenamiento.ordenamientoIntercambio(lista, criterioAux);
-                limpiarCampos();
                 return;
             }
 
