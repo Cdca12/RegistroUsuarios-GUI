@@ -1,7 +1,7 @@
 package utils;
 
 
-class Nodo<T> {
+public class Nodo<T> {
 
     public T Info;
     private Nodo<T> Sig;
